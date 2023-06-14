@@ -18,8 +18,8 @@ def alert_missing_paths(paths: list[Path]):
         )
         print(msg)
         # Showing a message box this way is discouraged, but creating a new operator is overkill.
-        bpy.context.window_manager.popup_menu(lambda self, _: self.layout.label(text=msg), title="Error", icon="ERROR")
-
+        # this crashes when blender is not fully initialized yet, but this module is imported an missing a path.
+        # bpy.context.window_manager.popup_menu(lambda self, _: self.layout.label(text=msg), title="Error", icon="ERROR")
 
 # Get paths to workspaces from environment variables.
 modular_assets_path = Path(os.environ.get("RPM_MODULAR_ASSETS", ""))
