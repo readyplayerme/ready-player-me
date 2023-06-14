@@ -24,7 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.7",
 ]
 #dynamic = ["dependencies"]
-dependencies = ['importlib-metadata; python_version<"3.7"', "pyblend @ git+https://github.com/readyplayerme/pyblend",]
+dependencies = ['importlib-metadata; python_version<"3.7"', "pyblend @ git+https://github.com/readyplayerme/pyblend"]
 #dynamic = ["version"]
 version = "0.0.1"
 
