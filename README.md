@@ -1,7 +1,7 @@
 # ready_player_me
 ready_player_me python API for Blender
 
-This API includes modules that are used by multiple tools on RPM environment
+This API includes modules that are used by multiple tools on RPM environment, as well settings presets for exporting files for RPM.
 
 ## Install
 This repo can be installed manually or through PIP. 
