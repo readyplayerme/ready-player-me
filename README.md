@@ -4,13 +4,7 @@ ready_player_me python API for Blender
 This API includes modules that are used by multiple tools on RPM environment, as well settings presets for exporting files for RPM.
 
 ## Install
-This repo can be installed manually or through PIP. 
-
-### Manual install
-Instructions:
-- download latest
-- install as a blender add-on, by extracting the whole folder in your addons folder
-- PIP install the dependencies from `requirements.txt`
+This repo can be installed through PIP. 
 
 #### PIP
 Installing through PIP
