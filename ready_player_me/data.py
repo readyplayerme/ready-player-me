@@ -25,6 +25,31 @@ def alert_missing_paths(paths: list[Path]):
 modular_assets_path = Path(os.environ.get("RPM_MODULAR_ASSETS", ""))
 wardrobe_path = Path(os.environ.get("RPM_WARDROBE", ""))
 assetlib_path = Path(os.environ.get("RPM_ASSETLIB", ""))
+
+# run the command "cm workspace list".
+# the output liiks like this:
+#   assetlib@WOLF-PC           c:\Users\USER\wkspaces\assetlib
+#   wardrobe@WOLF-PC           c:\Users\USER\wkspaces\wardrobe
+#   partner-assets@WOLF-PC     c:\Users\USER\wkspaces\partner-assets
+#   modular_assets_2@WOLF-PC   c:\Users\USER\wkspaces\modular_assets
+#   Blender-Tools@WOLF-PC      c:\Users\USER\wkspaces\Blender-Tools_2
+
+# run it
+import subprocess
+output = subprocess.check_output("cm workspace list", shell=True)
+output = output.decode("utf-8")  # output is a byte string, convert to utf-8
+lines = output.split("\n")
+lines = [line for line in lines if line]  # remove empty lines
+lines = [line.split() for line in lines]  # split into name and path
+lines = {line[0].split("@")[0]: Path(line[1]) for line in lines}
+
+if not os.environ.get("RPM_MODULAR_ASSETS"):
+    modular_assets_path = lines["modular_assets"]
+if not os.environ.get("RPM_WARDROBE"):
+    wardrobe_path = lines["wardrobe"]
+if not os.environ.get("RPM_ASSETLIB"):
+    assetlib_path = lines["assetlib"]
+
 # Where there any environment variables not set?
 alert_missing_paths([modular_assets_path, wardrobe_path, assetlib_path])
 
