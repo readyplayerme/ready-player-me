@@ -44,11 +44,11 @@ lines = [line.split() for line in lines]  # split into name and path
 lines = {line[0].split("@")[0]: Path(line[1]) for line in lines}
 
 if not os.environ.get("RPM_MODULAR_ASSETS"):
-    modular_assets_path = lines["modular_assets"]
+    modular_assets_path = Path(lines.get("modular_assets", ""))
 if not os.environ.get("RPM_WARDROBE"):
-    wardrobe_path = lines["wardrobe"]
+    wardrobe_path = Path(lines.get("wardrobe", ""))
 if not os.environ.get("RPM_ASSETLIB"):
-    assetlib_path = lines["assetlib"]
+    assetlib_path = Path(lines.get("assetlib", ""))
 
 # Where there any environment variables not set?
 alert_missing_paths([modular_assets_path, wardrobe_path, assetlib_path])
